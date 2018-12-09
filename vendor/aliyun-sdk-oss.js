@@ -20919,6 +20919,10 @@ module.exports={
           },
           "VersionId": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21629,6 +21633,10 @@ module.exports={
           },
           "Prefix": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },

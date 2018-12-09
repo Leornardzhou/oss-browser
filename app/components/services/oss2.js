@@ -115,7 +115,8 @@ angular.module('web')
         client.listObjects({
           Bucket: bucket,
           Prefix: prefix,
-          MaxKeys: 1
+          MaxKeys: 1,
+          RequestPayer:'requester'
         }, function (err, data) {
           if (err) {
             handleError(err);
@@ -435,7 +436,8 @@ angular.module('web')
           function nextList(marker) {
             var opt = {
               Bucket: source.bucket,
-              Prefix: source.path
+              Prefix: source.path,
+              RequestPayer:'requester'
             };
             if (marker) opt.Marker = marker;
 
@@ -1150,7 +1152,8 @@ angular.module('web')
             Bucket: bucket,
             Prefix: key,
             Delimiter: '/',
-            Marker: marker || ''
+            Marker: marker || '',
+            RequestPayer:'requester'
           };
 
           client.listObjects(opt, function (err, result) {
@@ -1244,7 +1247,8 @@ angular.module('web')
         var opt = {
           Bucket: bucket,
           Prefix: key,
-          Delimiter: '/'
+          Delimiter: '/',
+          RequestPayer:'requester'
         };
         _dig();
 
