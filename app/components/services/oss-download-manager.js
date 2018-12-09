@@ -261,7 +261,8 @@ angular.module('web')
               SecurityToken: auth.stoken
             }
           },
-          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl)
+          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl),
+          cname: AuthInfo.get().cname || false
         });
       }
       else{
@@ -270,7 +271,8 @@ angular.module('web')
             accessKeyId: auth.id,
             secretAccessKey: auth.secret
           },
-          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.from.bucket, auth.eptpl)
+          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.from.bucket, auth.eptpl),
+          cname: AuthInfo.get().cname || false
         });
       }
       return store.createDownloadJob(opt);

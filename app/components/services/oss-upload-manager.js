@@ -277,6 +277,8 @@ angular.module('web')
       */
       function createJob(auth, opt) {
 
+        var cname = AuthInfo.get().cname || false
+
         //stsToken
         if(auth.stoken && auth.id.indexOf('STS.')==0){
           var store = new OssStore({
@@ -287,7 +289,8 @@ angular.module('web')
                 SecurityToken: auth.stoken
               }
             },
-            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl)
+            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl),
+            cname: cname
           });
         }
         else{
@@ -296,7 +299,8 @@ angular.module('web')
               accessKeyId: auth.id,
               secretAccessKey: auth.secret
             },
-            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl)
+            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl),
+            cname: cname
           });
         }
         return store.createUploadJob(opt);

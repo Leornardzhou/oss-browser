@@ -56,7 +56,8 @@ function OssStore(config) {
       maxRetries: 0,
       httpOptions: {
         timeout: TIMEOUT
-      }
+      },
+      cname: this._config.cname
     });
   }
   else {
@@ -68,7 +69,8 @@ function OssStore(config) {
       maxRetries: 0,
       httpOptions: {
         timeout: TIMEOUT
-      }
+      },
+      cname: this._config.cname
     });
   }
 
@@ -95,7 +97,8 @@ OssStore.prototype.setStsToken = function(stsToken){
     maxRetries: 0,
     httpOptions: {
       timeout: TIMEOUT
-    }
+    },
+    cname: this._config.cname
   });
 };
 
