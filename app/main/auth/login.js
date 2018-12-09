@@ -39,9 +39,10 @@ angular.module('web')
         eptplChange: eptplChange
       });
 
-      // $scope.$watch('item.eptpl', function(v){
-      //   $scope.eptplType = (v==DEF_EP_TPL)?'default':'customize';
-      // });
+      $scope.$watch('item.eptpl', function(v){
+        $scope.eptplType = (v==DEF_EP_TPL)?'default':'customize';
+      });
+      
       $scope.$watch('gtab', function(v){
         localStorage.setItem('gtag',v)
       });
