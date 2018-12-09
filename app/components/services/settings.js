@@ -10,6 +10,14 @@ angular.module('web')
         return localStorage.setItem('autoUpgrade',v);
       }
     },
+    isCame: {
+      get: function(){
+        return parseInt(localStorage.getItem('isCame')||0);
+      },
+      set: function(v){
+        return localStorage.setItem('isCame',v);
+      }
+    },
     maxUploadJobCount: {
       get: function(){
         return parseInt(localStorage.getItem('maxUploadJobCount')||3);

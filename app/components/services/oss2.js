@@ -69,6 +69,7 @@ angular.module('web')
           endpoint: options.endpoint,
           bucket: opt.bucket,
           stsToken: options.securityToken,
+          cname:options.cname
         });
         console.log(OSS.version);
         return client;
@@ -1420,7 +1421,6 @@ angular.module('web')
 
         var endpoint = getOssEndpoint(authInfo.region || 'oss-cn-beijing', bucket, authInfo.eptpl);
         console.log("[endpoint]:", endpoint)
-
         var options = {
           //region: authInfo.region,
           accessKeyId: authInfo.id || 'a',
@@ -1430,7 +1430,8 @@ angular.module('web')
           httpOptions: {
             timeout: authInfo.httpOptions ? authInfo.httpOptions.timeout : 0
           },
-          maxRetries: 50
+          maxRetries: 50,
+          cname: authInfo.cname || false
         };
 
         if (authInfo.id && authInfo.id.indexOf('STS.') == 0) {

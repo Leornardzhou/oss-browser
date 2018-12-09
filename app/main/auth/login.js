@@ -1,7 +1,7 @@
 
 angular.module('web')
-  .controller('loginCtrl', ['$scope', '$rootScope', '$translate','Auth','AuthInfo','$timeout','$location','Const','Dialog','Toast','Cipher',
-    function ($scope, $rootScope, $translate, Auth, AuthInfo,$timeout, $location, Const, Dialog, Toast, Cipher) {
+  .controller('loginCtrl', ['$scope', '$rootScope', '$translate','Auth','AuthInfo','$timeout','$location','Const','Dialog','Toast','Cipher','settingsSvs',
+    function ($scope, $rootScope, $translate, Auth, AuthInfo,$timeout, $location, Const, Dialog, Toast, Cipher, settingsSvs) {
 
       var DEF_EP_TPL = 'https://{region}.aliyuncs.com';
 
@@ -39,22 +39,30 @@ angular.module('web')
         eptplChange: eptplChange
       });
 
-      $scope.$watch('item.eptpl', function(v){
-        $scope.eptplType = (v==DEF_EP_TPL)?'default':'customize';
-      });
+      // $scope.$watch('item.eptpl', function(v){
+      //   $scope.eptplType = (v==DEF_EP_TPL)?'default':'customize';
+      // });
       $scope.$watch('gtab', function(v){
         localStorage.setItem('gtag',v)
       });
 
+      $scope.$watch('item.cname', function(v){
+        console.log("cname:" + v);
+      });
 
       function eptplChange(t){
         $scope.eptplType=t;
         //console.log(t);
         if(t=='default'){
            $scope.item.eptpl = DEF_EP_TPL;
-        }else{
-          $scope.item.eptpl ='';
-        }
+           $scope.item.cname = false;
+        }else if(t == 'customize') {
+          $scope.item.cname = false;
+          $scope.item.eptpl = '';
+        } else if (t == 'cname') {
+            $scope.item.cname = true;
+            $scope.item.eptpl ='';
+          }
       }
 
       function open(a){
@@ -170,7 +178,6 @@ angular.module('web')
         if(!form1.$valid)return;
 
         localStorage.setItem(KEY_REMEMBER,$scope.flags.remember);
-
         var data = angular.copy($scope.item);
         //trim password
         if(data.secret) data.secret = data.secret.trim();
@@ -187,8 +194,6 @@ angular.module('web')
         }
 
         Toast.info(T('logining'), 1000);
-
-
 
         Auth.login(data).then(function(){
           if (!data.region && data.eptpl.indexOf('{region}') === -1) {
