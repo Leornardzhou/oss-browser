@@ -251,6 +251,10 @@ angular.module('web')
      * @return job  { start(), stop(), status, progress }
      */
     function createJob(auth, opt) {
+
+      var cname = AuthInfo.get().cname || false
+
+      var endpointname = cname?auth.eptplcname: auth.eptpl
       //stsToken
       if(auth.stoken && auth.id.indexOf('STS.')==0){
         var store = new OssStore({
@@ -261,8 +265,8 @@ angular.module('web')
               SecurityToken: auth.stoken
             }
           },
-          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl),
-          cname: AuthInfo.get().cname || false
+          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, endpointname),
+          cname: cname
         });
       }
       else{
@@ -271,8 +275,8 @@ angular.module('web')
             accessKeyId: auth.id,
             secretAccessKey: auth.secret
           },
-          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.from.bucket, auth.eptpl),
-          cname: AuthInfo.get().cname || false
+          endpoint: ossSvs2.getOssEndpoint(opt.region, opt.from.bucket, endpointname),
+          cname: cname
         });
       }
       return store.createDownloadJob(opt);

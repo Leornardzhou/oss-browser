@@ -1422,8 +1422,8 @@ angular.module('web')
             bucket = opt.bucket;
           }
         }
-
-        var endpoint = getOssEndpoint(authInfo.region || 'oss-cn-beijing', bucket, authInfo.eptpl);
+        var endpointname = authInfo.cname? authInfo.eptplcname: authInfo.eptpl;
+        var endpoint = getOssEndpoint(authInfo.region || 'oss-cn-beijing', bucket, endpointname);
         console.log("[endpoint]:", endpoint)
         var options = {
           //region: authInfo.region,

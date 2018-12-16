@@ -21,6 +21,7 @@ angular.module('web')
         item: {
           eptpl: DEF_EP_TPL,
         },
+        requestpaystatus: false,
         eptplType: 'default',
 
         hideTopNav: 1,
@@ -42,13 +43,20 @@ angular.module('web')
       $scope.$watch('item.eptpl', function(v){
         $scope.eptplType = (v==DEF_EP_TPL)?'default':'customize';
       });
+
+        // $scope.$watch('item.eptpl', function(v){
+        //     // $scope.eptplType = (v==DEF_EP_TPL)?'default':'customize';
+        // });
       
       $scope.$watch('gtab', function(v){
         localStorage.setItem('gtag',v)
       });
 
       $scope.$watch('item.cname', function(v){
-        console.log("cname:" + v);
+        console.log('cname: '+ v )
+        if(v) {
+          $scope.eptplType = 'cname'
+        }
       });
 
       function eptplChange(t){
@@ -62,7 +70,7 @@ angular.module('web')
           $scope.item.eptpl = '';
         } else if (t == 'cname') {
             $scope.item.cname = true;
-            $scope.item.eptpl ='';
+            $scope.item.eptplcname ='';
           }
       }
 
@@ -140,7 +148,11 @@ angular.module('web')
       }
 
       function useHis(h){
+        if (h.cname) {
+          $scope.eptplType = 'cname'
+        }
         angular.extend($scope.item, h);
+
         $scope.item.desc = h.desc || '';
       }
 
@@ -175,9 +187,7 @@ angular.module('web')
 
 
       function onSubmit(form1){
-
         if(!form1.$valid)return;
-
         localStorage.setItem(KEY_REMEMBER,$scope.flags.remember);
         var data = angular.copy($scope.item);
         //trim password

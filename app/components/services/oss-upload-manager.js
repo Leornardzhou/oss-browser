@@ -278,6 +278,7 @@ angular.module('web')
       function createJob(auth, opt) {
 
         var cname = AuthInfo.get().cname || false
+        var endpointname = cname?auth.eptplcname: auth.eptpl
 
         //stsToken
         if(auth.stoken && auth.id.indexOf('STS.')==0){
@@ -289,7 +290,7 @@ angular.module('web')
                 SecurityToken: auth.stoken
               }
             },
-            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl),
+            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, endpointname),
             cname: cname
           });
         }
@@ -299,7 +300,7 @@ angular.module('web')
               accessKeyId: auth.id,
               secretAccessKey: auth.secret
             },
-            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, auth.eptpl),
+            endpoint: ossSvs2.getOssEndpoint(opt.region, opt.to.bucket, endpointname),
             cname: cname
           });
         }

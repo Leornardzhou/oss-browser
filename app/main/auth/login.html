@@ -24,6 +24,12 @@
  </div>
 </script>
 
+<script type="text/ng-template" id="auth-requestpay-popup.html">
+    <div>
+        {{'requestpay.popup.msg'|translate}}(<a href="https://help.aliyun.com/document_detail/91337.html">{{'requestpay.link' | translate }}</a>)
+    </div>
+</script>
+
 
 <div style="overflow:auto;height:100%">
 
@@ -75,8 +81,8 @@
                         <!--// cname -->
                         <div style="display:flex;justify-content: space-around" class="col-sm-8" style="padding-left:0" ng-if="eptplType=='cname'"
                                ng-class="{'has-error':!form1.endpoint.$valid}">
-                              <input type="text" required ng-model="item.eptpl" ng-pattern="/^http(s)?\:\/\//"
-                                     class="form-control" id="cname" name="cname" placeholder="https://">
+                              <input type="text" required ng-model="item.eptplcname" ng-pattern="/^http(s)?\:\/\//"
+                                     class="form-control" id="cname" name="cname" placeholder="http://">
                           </div>
                       </div>
                    </div>
@@ -119,6 +125,23 @@
                         </div>
                     </div>
 
+                    <div ng-if="item.osspath" class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="requestpaystatus"
+                                           ng-true-value="'YES'" ng-false-value="'NO'">
+                                    {{'requestPay'|translate}}
+                                    <!-- 记住秘钥 -->
+
+                                    <span uib-popover-template="'auth-requestpay-popup.html'"
+                                          popover-trigger="'mouseenter'" popover-append-to-body="true">
+                                             <i class="fa fa-question-circle"></i>
+                                           </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="form-group" ng-if="item.osspath && item.eptpl.indexOf('{region}')!=-1">
                         <label for="input4" class="col-sm-4 control-label">
