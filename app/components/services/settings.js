@@ -77,6 +77,14 @@ angular.module('web')
         return localStorage.setItem('logFileInfo',v);
       }
     },
+    getRequestPayStatus: {
+      get: function() {
+        return localStorage.getItem('show-request-pay')||'NO';
+      },
+      set: function(v){
+        return localStorage.setItem('show-request-pay',v);
+      }
+    },
     connectTimeout: {
       get: function() {
         return parseInt(localStorage.getItem('connectTimeout')||60000);

@@ -7,6 +7,7 @@ angular.module('web')
 
       var KEY_REMEMBER = Const.KEY_REMEMBER;
       var SHOW_HIS = Const.SHOW_HIS;
+      var SHOW_REQUEST_PAY = Const.SHOW_REQUEST_PAY;
       var KEY_AUTHTOKEN = 'key-authtoken';
       var regions = angular.copy(Const.regions);
 
@@ -16,12 +17,12 @@ angular.module('web')
         gtab: parseInt(localStorage.getItem('gtag')||1),
         flags: {
           remember: 'NO',
-          showHis: 'NO'
+          showHis: 'NO',
+          requestpaystatus: 'NO'
         },
         item: {
           eptpl: DEF_EP_TPL,
         },
-        requestpaystatus: false,
         eptplType: 'default',
 
         hideTopNav: 1,
@@ -37,7 +38,7 @@ angular.module('web')
         onSubmit2: onSubmit2,
         authTokenChange:authTokenChange,
 
-        eptplChange: eptplChange
+        eptplChange: eptplChange,
       });
 
       $scope.$watch('item.eptpl', function(v){
@@ -126,6 +127,9 @@ angular.module('web')
       function init(){
         $scope.flags.remember = localStorage.getItem(KEY_REMEMBER) || 'NO';
         $scope.flags.showHis = localStorage.getItem(SHOW_HIS) || 'NO';
+
+        //requestPay状态
+        $scope.flags.requestpaystatus = localStorage.getItem(SHOW_REQUEST_PAY) || 'NO';
         angular.extend($scope.item , AuthInfo.getRemember());
 
 
@@ -144,6 +148,11 @@ angular.module('web')
 
         $scope.$watch('flags.showHis',function(v){
           localStorage.setItem(SHOW_HIS,v);
+        });
+
+        $scope.$watch('flags.requestpaystatus',function(v){
+          console.log(v)
+          localStorage.setItem(SHOW_REQUEST_PAY,v);
         });
       }
 
@@ -190,6 +199,12 @@ angular.module('web')
         if(!form1.$valid)return;
         localStorage.setItem(KEY_REMEMBER,$scope.flags.remember);
         var data = angular.copy($scope.item);
+
+        delete data.requestpaystatus;
+
+        if(!data.requestpaystatus) {
+          data.requestpaystatus = localStorage.getItem(SHOW_REQUEST_PAY) || 'NO';
+        }
         //trim password
         if(data.secret) data.secret = data.secret.trim();
 

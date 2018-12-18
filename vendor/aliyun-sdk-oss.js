@@ -19782,6 +19782,10 @@ module.exports={
           "UploadId": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -19831,6 +19835,10 @@ module.exports={
           "UploadId": {
             "required": true,
             "location": "uri"
+          }, 
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -19967,6 +19975,10 @@ module.exports={
           "WebsiteRedirectLocation": {
             "location": "header",
             "name": "x-oss-website-redirect-location"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20038,6 +20050,10 @@ module.exports={
                  "name": "StorageClass"
                }
             }
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20132,6 +20148,10 @@ module.exports={
           "WebsiteRedirectLocation": {
             "location": "header",
             "name": "x-oss-website-redirect-location"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20162,6 +20182,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20182,6 +20206,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20202,6 +20230,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20222,6 +20254,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20242,6 +20278,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20262,6 +20302,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20282,6 +20326,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20313,6 +20361,10 @@ module.exports={
           },
           "VersionId": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20377,6 +20429,10 @@ module.exports={
           "MFA": {
             "location": "header",
             "name": "x-oss-mfa"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20427,6 +20483,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20483,6 +20543,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20541,6 +20605,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20600,6 +20668,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20622,6 +20694,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20677,6 +20753,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20705,6 +20785,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20728,6 +20812,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20750,6 +20838,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20782,6 +20874,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -20805,6 +20901,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21036,6 +21136,10 @@ module.exports={
           },
           "VersionId": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21140,6 +21244,10 @@ module.exports={
           },
           "VersionId": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21179,6 +21287,10 @@ module.exports={
           "Key": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21205,6 +21317,10 @@ module.exports={
           "Bucket": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21254,6 +21370,10 @@ module.exports={
           },
           "VersionId": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21359,6 +21479,10 @@ module.exports={
           "MaxKeys": {
             "location": "uri",
             "type": "integer"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21419,6 +21543,10 @@ module.exports={
           },
           "UploadIdMarker": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21516,6 +21644,10 @@ module.exports={
           },
           "VersionIdMarker": {
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21723,6 +21855,10 @@ module.exports={
           "UploadId": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21864,6 +22000,10 @@ module.exports={
           "GrantWriteACP": {
             "location": "header",
             "name": "x-oss-grant-write-acp"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -21931,6 +22071,10 @@ module.exports={
           "ContentMD5": {
             "location": "header",
             "name": "Content-MD5"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22004,6 +22148,10 @@ module.exports={
                 "flattened": true
               }
             }
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22070,6 +22218,10 @@ module.exports={
           "ContentMD5": {
             "location": "header",
             "name": "Content-MD5"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22109,6 +22261,10 @@ module.exports={
                 }
               }
             }
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22171,6 +22327,10 @@ module.exports={
                 "required": true
               }
             }
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22219,6 +22379,10 @@ module.exports={
                 }
               }
             }
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22256,6 +22420,10 @@ module.exports={
               "MFADelete": {},
               "Status": {}
             }
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22445,6 +22613,10 @@ module.exports={
           "WebsiteRedirectLocation": {
             "location": "header",
             "name": "x-oss-website-redirect-location"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22557,6 +22729,10 @@ module.exports={
           "Key": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22584,12 +22760,20 @@ module.exports={
             "required": true,
             "location": "uri"
           },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
+          },
           "RestoreRequest": {
             "type": "structure",
             "members": {
               "Days": {
                 "type": "integer",
                 "required": true
+              },
+              "RequestPayer": {
+                "location": "header",
+                "name": "x-oss-request-payer"
               }
             }
           }
@@ -22639,6 +22823,10 @@ module.exports={
           "UploadId": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22710,6 +22898,10 @@ module.exports={
           "UploadId": {
             "required": true,
             "location": "uri"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22826,6 +23018,10 @@ module.exports={
           "WebsiteRedirectLocation": {
             "location": "header",
             "name": "x-oss-website-redirect-location"
+          },
+          "RequestPayer": {
+            "location": "header",
+            "name": "x-oss-request-payer"
           }
         }
       },
@@ -22889,5 +23085,4 @@ module.exports={
     }
   }
 }
-
 },{}]},{},[3]);

@@ -194,7 +194,8 @@ DownloadJob.prototype.startDownload = function (checkPoints) {
 
   var objOpt = {
     Bucket: self.from.bucket,
-    Key: self.from.key
+    Key: self.from.key,
+    RequestPayer:'requester'
   };
 
   util.headObject(self, objOpt, function (err, headers) {

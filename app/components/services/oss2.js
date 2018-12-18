@@ -94,7 +94,8 @@ angular.module('web')
           });
           var opt = {
             Bucket: bucket,
-            Key: key
+            Key: key,
+            RequestPayer:'requester'
           };
           client.headObject(opt, function (err, data) {
             if (err) {
@@ -335,7 +336,8 @@ angular.module('web')
           client.copyObject({
             Bucket: to.bucket,
             Key: toKey,
-            CopySource: fromKey
+            CopySource: fromKey,
+            RequestPayer:'requester'
           }, function (err) {
 
             if (err) {
@@ -350,7 +352,7 @@ angular.module('web')
               });
               client2.deleteObject({
                 Bucket: from.bucket,
-                Key: from.key
+                Key: from.key,
               }, function (err) {
                 if (err) fn(err);
                 else fn();
@@ -396,7 +398,8 @@ angular.module('web')
 
             copyOssFile(client, {
               bucket: bucket,
-              key: item.path
+              key: item.path,
+              RequestPayer:'requester'
             }, {
               bucket: target.bucket,
               key: toKey
@@ -502,7 +505,8 @@ angular.module('web')
                     //移动全部成功， 删除目录
                     client.deleteObject({
                       Bucket: source.bucket,
-                      Key: source.path
+                      Key: source.path,
+                      RequestPayer:'requester'
                     }, function (err) {
                       $timeout(function () {
                         fn(t);
@@ -527,7 +531,8 @@ angular.module('web')
           });
           copyOssFile(client, {
             bucket: source.bucket,
-            key: source.path
+            key: source.path,
+            RequestPayer:'requester'
           }, {
             bucket: target.bucket,
             key: target.key
@@ -625,7 +630,8 @@ angular.module('web')
           Bucket: bucket,
           Key: newKey,
           CopySource: '/' + bucket + '/' + encodeURIComponent(oldKey),
-          MetadataDirective: 'REPLACE' // 'REPLACE' 表示覆盖 meta 信息，'COPY' 表示不覆盖，只拷贝
+          MetadataDirective: 'REPLACE', // 'REPLACE' 表示覆盖 meta 信息，'COPY' 表示不覆盖，只拷贝,
+          RequestPayer:'requester'
         }, function (err) {
           if (err) {
             df.reject(err);
@@ -636,7 +642,8 @@ angular.module('web')
             } else {
               client.deleteObject({
                 Bucket: bucket,
-                Key: oldKey
+                Key: oldKey,
+                RequestPayer:'requester'
               }, function (err) {
                 if (err) {
                   df.reject(err);
@@ -664,7 +671,8 @@ angular.module('web')
           opt = angular.extend({
             Bucket: bucket,
             Prefix: '',
-            'MaxUploads': maxUploads
+            'MaxUploads': maxUploads,
+            RequestPayer:'requester'
           }, opt);
           client.listMultipartUploads(opt, function (err, result) {
             if (err) {
@@ -715,7 +723,8 @@ angular.module('web')
           client.abortMultipartUpload({
             Bucket: bucket,
             Key: uploads[c].name,
-            UploadId: uploads[c].uploadId
+            UploadId: uploads[c].uploadId,
+            RequestPayer:'requester'
           }, function (err, result) {
             if (err) df.reject(err);
             else {
@@ -737,7 +746,8 @@ angular.module('web')
           client.putObject({
             Bucket: bucket,
             Key: prefix,
-            Body: ''
+            Body: '',
+            RequestPayer:'requester'
           }, function (err, data) {
             if (err) {
               handleError(err);
@@ -778,7 +788,8 @@ angular.module('web')
         var url = client.getSignedUrl('getObject', {
           Bucket: bucket,
           Key: key,
-          Expires: expiresSec || 60
+          Expires: expiresSec || 60,
+          RequestPayer:'requester'
         });
         return url;
       }
@@ -910,7 +921,8 @@ angular.module('web')
           client.getObject({
             Bucket: bucket,
             Key: key,
-            ResponseCacheControl: 'No-cache'
+            ResponseCacheControl: 'No-cache',
+            RequestPayer:'requester'
           }, function (err, data) {
             if (err) {
               handleError(err);
@@ -931,7 +943,8 @@ angular.module('web')
 
           client.headObject({
             Bucket: bucket,
-            Key: key
+            Key: key,
+            RequestPayer:'requester'
           }, function (err, result) {
 
             if (err) {
@@ -951,8 +964,8 @@ angular.module('web')
                 'ContentDisposition': result.ContentDisposition,
                 'ContentEncoding': '',
                 'Expires': result.Expires,
-                'Metadata': result.Metadata
-
+                'Metadata': result.Metadata,
+                RequestPayer:'requester'
               }, function (err) {
                 if (err) {
                   handleError(err);
@@ -1009,7 +1022,8 @@ angular.module('web')
           });
           var opt = {
             Bucket: bucket,
-            Key: key
+            Key: key,
+            RequestPayer:'requester'
           };
           client.headObject(opt, function (err, data) {
 
@@ -1043,6 +1057,7 @@ angular.module('web')
             ContentEncoding: '', //headers['ContentEncoding'],
             ContentLanguage: headers['ContentLanguage'],
             Expires: headers['Expires'],
+            RequestPayer:'requester'
           };
           client.copyObject(opt, function (err, data) {
 
@@ -1068,7 +1083,8 @@ angular.module('web')
             Key: key,
             RestoreRequest: {
               Days: days || 7
-            }
+            },
+            RequestPayer:'requester'
           };
 
           client.restoreObject(opt, function (err, data) {

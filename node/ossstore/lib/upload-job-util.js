@@ -89,7 +89,8 @@ function completeMultipartUpload(self, doneParams ,fn){
 
           self.oss.headObject({
             Bucket: self.to.bucket,
-            Key: self.to.key
+            Key: self.to.key,
+            RequestPayer:'requester'
           }, function(err2, data2){
             //console.log('headobject: ', err2, err2.message, data);
             if(err2){

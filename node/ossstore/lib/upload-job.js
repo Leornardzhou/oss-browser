@@ -277,7 +277,8 @@ UploadJob.prototype.uploadSingle = function () {
       Bucket: self.to.bucket,
       Key: self.to.key,
       Body: data,
-      ContentType: mime.lookup(self.from.path)
+      ContentType: mime.lookup(self.from.path),
+      RequestPayer:'requester'
     };
 
 
@@ -379,7 +380,8 @@ UploadJob.prototype.uploadMultipart = function (checkPoints) {
   var params = {
     Bucket: self.to.bucket,
     Key: self.to.key,
-    ContentType: mime.lookup(self.from.path)
+    ContentType: mime.lookup(self.from.path),
+    RequestPayer:'requester'
   };
   self.prog.total = checkPoints.file.size;
 
@@ -506,7 +508,8 @@ UploadJob.prototype.uploadMultipart = function (checkPoints) {
         Bucket: self.to.bucket,
         Key: self.to.key,
         PartNumber: (partNum + 1),
-        UploadId: checkPoints.uploadId
+        UploadId: checkPoints.uploadId,
+        RequestPayer:'requester'
       };
 
       doUpload(partParams);
@@ -680,7 +683,8 @@ UploadJob.prototype.uploadMultipart = function (checkPoints) {
       Bucket: self.to.bucket,
       Key: self.to.key,
       CompleteMultipartUpload: completeState,
-      UploadId: checkPoints.uploadId
+      UploadId: checkPoints.uploadId,
+      RequestPayer:'requester'
     };
 
     // console.log('4444444', doneParams)

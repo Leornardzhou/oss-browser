@@ -8,6 +8,7 @@ angular.module('web')
       };
 
       function login(data) {
+
         if(!data.osspath)delete data.region;
 
         var df = $q.defer();
@@ -25,8 +26,15 @@ angular.module('web')
           var info = ossSvs2.parseOSSPath(data.osspath);
           data.bucket = info.bucket;
 
-          ossSvs2.getClient(data).listObjects({Bucket: info.bucket, Prefix: info.key, Marker:'',MaxKeys:1, Delimiter:'/', RequestPayer:'requester'
-          }, function(err, result){
+          // support requestPay listobjects
+          var requestPayObject = { RequestPayer:'requester'}
+          var listObjectOpt = { Bucket: info.bucket, Prefix: info.key, Marker:'',MaxKeys:1, Delimiter:'/'}
+
+          if (data.requestpaystatus == 'YES') {
+            Object.assign(listObjectOpt, requestPayObject);
+          }
+
+          ossSvs2.getClient(data).listObjects(listObjectOpt, function(err, result){
             if(err){
               df.reject(err);
             }
