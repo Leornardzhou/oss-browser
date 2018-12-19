@@ -232,7 +232,7 @@ angular.module('web')
 
               if (itemsToDelete.length == 500 || (objectsCount != 0 && objectsCount + foldersCount == len)) {
                 if (itemsToDelete.length > 1) {
-                  client.deleteMulti(itemsToDelete).then(function (res) {
+                  client.deleteMulti(itemsToDelete , {isRequestPay: true}).then(function (res) {
                     c += itemsToDelete.length;
                     progress.current += itemsToDelete.length;
                     itemsToDelete.splice(0, itemsToDelete.length);
@@ -248,7 +248,7 @@ angular.module('web')
                     $timeout(dig, NEXT_TICK);
                   });
                 } else {
-                  client.delete(itemsToDelete[0]).then(function (res) {
+                  client.delete(itemsToDelete[0], {isRequestPay: true}).then(function (res) {
                     c += itemsToDelete.length;
                     progress.current += itemsToDelete.length;
                     itemsToDelete.splice(0, itemsToDelete.length);
@@ -278,7 +278,7 @@ angular.module('web')
                 return;
               }
 
-              client.delete(item.path).then(function (res) {
+              client.delete(item.path, {isRequestPay: true}).then(function (res) {
                 c++;
                 progress.current++;
                 $timeout(dig, NEXT_TICK);
@@ -353,6 +353,7 @@ angular.module('web')
               client2.deleteObject({
                 Bucket: from.bucket,
                 Key: from.key,
+                RequestPayer:'requester'
               }, function (err) {
                 if (err) fn(err);
                 else fn();
